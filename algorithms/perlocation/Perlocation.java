@@ -9,6 +9,8 @@
  * 
  *  Description:  Perlocation app
  ******************************************************************************/
+import java.util.ArrayList;
+
 public class Perlocation {
     private final int mapSize;
     private boolean[][] sitesMap;
@@ -58,12 +60,16 @@ public class Perlocation {
     
     // does the system percolate?
     public boolean percolates() {
-        double totalNum = Math.pow(this.mapSize - 1, 2);
-        double quotient = this.numberOfOpenSites() / totalNum;
-        return  quotient >= 0.593;
-    }
-    
-    public static void main(String[] args) {
-        Perlocation p = new Perlocation(5);
+        /*double totalNum = Math.pow(this.mapSize - 1, 2);
+        double quotient = this.numberOfOpenSites() / totalNum;*/
+        ArrayList<int[]> openList = new ArrayList<int[]>();
+        for (int y = 1; y < this.mapSize; y++) {
+            if (isOpen(1, y)) {
+                openList.add(new int[] {x, y});
+            }
+        }
+        
+        //return  quotient >= 0.593;
+        return false;
     }
 }
